@@ -1,3 +1,23 @@
 title, h1, h2, h3, h4, h5, h6, p, ul {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    padding-left: 16px;
+}
+
+li::before {
+    content: "\2022";
+    padding-right: 8px;
+    color: rgb(231, 35, 35);
+}
+
+a {
+    color: rgb(0,0,0);
+    text-decoration: underline;
+    text-decoration-color:rgb(231, 35, 35);
+}
