@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="styles.css">
+    <head>
+        <title>Drew's Portfolio</title>
+    </head>
+    <header>
+        <h1>Arduino Frogger</h1>
+    </header>
+    <h2>
+        Project Overview
+    </h2>
+    <p>
+        This project was my final project for an embedded systems class I took in the Fall of 2017. The goal of the project was
+        to create a version of the arcade game Frogger that would run on an Arduino board. I worked with a partner on this project
+        to design a hardware layout for our device. I handled most of the sofware development on my own. We chose to base our game 
+        on Frogger because it would provide an appropriate level of complexity without having to develop any kind of "intelligent"
+        enemy system. Additionally, I am a huge <i>Seinfeld</i> fan and I really like the episode where George Costanza recreates 
+        the Frogger game while trying to save an old Frogger arcade cabinet from his youth.  
+    </p>
+    <h2>
+        Introduction to Frogger
+    </h2>
+    <p>
+        Frogger is an arcade game where the user must guide a frog from the bottom of the screen to one of five "homes" at the top of the screen.
+        Along the way, users have to avoid obstacles traveling across the screen. The most common obstacles the user must avoid are cars, dangerous animals,
+        and falling into a river. When researching the rules of Frogger, I found that Softline computer magazine once said this was "the arcade game with the most
+        ways to die." The goal of the game is to score as many points as possible by getting the frog to its home. The game is over when the user runs out of lives.<!--TODO: Insert a screenshot of original frogger?-->
+
+    </p>
+    <h2>
+        Hardware
+    </h2>
+    <p>
+        An Arduino Mega 2560 was used as the main board of our device. We also used five simple push buttons, 4 were for directional movement and the other was a start button.
+        A serial 128x64 pixel OLED screen was used to display the game. The screen ended up being much smaller than we had anticipated when we ordered it online. Lastly, we
+        used a DC power plug for a 9V battery so that our game could be played anywhere.
+    </p>
+    <h2>
+        Software Development
+    </h2>
+    <p>
+        I chose to develop the software in such a way that I would have basic movement and collision detection completed before 
+        adding obstacles and other necessary gameplay elements. 
+    </p>
+    <h3>
+        Visuals and Movement
+    </h3>
+    <p>
+        To start, I wanted to figure out how to output bitmaps to the screen. I drew a simple frog design and two car designs on graph paper before 
+        coding these bitmaps and outputting them to the screen. Once I could do that, I wrote code to "hop" the frog based on button input.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/2ntUMQ8pLTc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h3>Collisions</h3>
+    <p>
+        Once I had movement working, I wanted to test collisions between the frog and cars that were drawn in place. It took a little to figure out 
+        what offsets from the frog's position were correct for collisions. This was because the collision had to be detected when any part of the frog touched a vehicle.
+        Prior to fixing that, it was possible for the frog to hop through part of a car. Also at this time, I realized I could minimize the number of collision checks if 
+        I only checked the frog's position against objects in the same row. When it was time for scoring to be implemented, the game's life count was decremented when a collision
+        occurred. 
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Vzk29q3BhQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h3>Animation</h3>
+    <p>
+        After determining how collisions could be detected, I had to animate the obstacles. This was not particularly difficult since I already knew how to hop the 
+        frogs position. Obstacles moved smoothly across the screen before wrappping back around. After some trial and error, I decided how fast each row of cars should travel
+        and how many cars there should be per row. The tiny screen was a limiting factor of obstacle animation since only so many cars could fit on the screen. Additionally, 
+        the screen resolution limited the speeds of the cars since it was very easy to make them move to quickly across the screen.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/flETDxc8ZOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>
+        Once animation was finished, we were pleased to see that collisions with moving objects worked as expected.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PKQALqOj_Bo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h3>Homes</h3>
+    <p>
+        The remaining cars were added to finish the street portion of the game before I developed the homes and win detection. I wanted to develop this
+        before developing the logs and river portion of the game becuase testing the homes would be much easier if there were less obstacles to avoid. 
+        When developing the homes, I realized I needed to make several small adjustments, like inverting the color of the frog when it was on top of the river water.
+        I also had to consider that placing the frog in an occupied home should be counted as a loss and not a win. I added a blinking animation to indicate a frog 
+        that successfully made it to a home.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/MdlGLVXHSik" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h3>Logs and the River</h3>
+    <p>
+        In some ways, developing the logs and the river might have been the most challenging part of this project. The main reason for this is that a lot of rules from the rest 
+        of the game would be inverted in this section. The collision detection checked for logs on the river. The collision detection between a frog and a log needed
+        to be counted as a positive instead of a loss of life. If the frog was found to be on a log, the frog needed to be animated so that it traveled with the log.
+        Loss of life occurred if the frog's vertical position indicated it was at the river but was not colliding with any logs. 
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kNL0Fe9rzrY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h3>Scoring, Leveling Up, and Game Over</h3>
+    <p>
+        The scoring system was added after developing the rest of the game. Due to time and hardware constraints, we were unable to display the user's score while the game
+        was in progress. Points were assigned as follows:
+    </p>
+    <ul>
+        <li>10 points - Any forward jump</li>
+        <li>100 points - Getting the frog in a house</li>
+        <li>500 points - Completing the level by filling all houses</li>
+    </ul>
+    <p>
+        The game would level up once it was found that all 3 houses had been filled. After this, the frogs were cleared from the houses and the speed of the game increased.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NpHTkerq7AA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>
+        The Game Over screen was displayed when all lives were lost. The Game Over screen showed At this point, we read a high score from our Arduino's 
+        built-in memory. If the user's current score bested this saved score, they could enter their initials to save their new high score.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/pg_OTs2FXrw?start=14" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h2>Conclusion</h2>
+    <p>
+        Overall, I enjoyed this project. I started co-op shortly after this project and began learning about the Unity engine. I was surprised to see how
+        a lot of the animation, movement, and collision detection functionality that I had to develop specifically for this project could be implemented very 
+        easily in the game engine.
+    </p>
+    <p><a href="main.html">Back to Main</a></p>
+</html>
