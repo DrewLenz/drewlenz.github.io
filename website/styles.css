@@ -116,11 +116,33 @@ a {
     color: white;
     padding: 10px 20px;
     text-align: center;
-    font-size: inherit;
+    vertical-align: middle;
+    
 }
 
 .button:hover {
     background-color: rgb(200, 35, 35)
+}
+
+.menu_bar {
+    background-color: rgb(51, 48, 48);
+    padding: 10px;
+}
+
+.menu_home_button {
+    color: white;
+    background-color: rgb(51, 48, 48);
+    border: rgb(51, 48, 48);
+    text-decoration: underline;
+    text-decoration-color:rgb(231, 35, 35);
+    font-size: 2em;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 0px 20px;
+}
+
+.menu_home_button:hover {
+    color: rgb(231, 35, 35);
 }
 
 img.align-center {
