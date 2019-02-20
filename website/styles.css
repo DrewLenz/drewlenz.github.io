@@ -1,5 +1,87 @@
-title, h1, h2, h3, h4, h5, h6, p, ul {
+* {
+    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#left, #right {
+    background: rgb(231, 35, 35);
+    position: fixed;
+    top: 0; bottom: 0;
+    width: 10px;
+}
+
+#left {
+    left: 0;
+}
+
+#right {
+    right: 0;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+[class*="col-"] {
+    float:left;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+    .outline {
+        max-height: 300px;
+    }
+
+    .outlined_img {
+        max-height: 270px;
+    }
 }
 
 ul {
@@ -16,8 +98,60 @@ li::before {
     color: rgb(231, 35, 35);
 }
 
+h1{
+    color: rgb(0,0,0);
+    text-decoration: underline;
+    text-decoration-color:rgb(231, 35, 35);
+}
+
 a {
     color: rgb(0,0,0);
     text-decoration: underline;
     text-decoration-color:rgb(231, 35, 35);
+}
+
+.button {
+    background-color: rgb(231, 35, 35);
+    border: black;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: inherit;
+}
+
+.button:hover {
+    background-color: rgb(200, 35, 35)
+}
+
+img.align-center {
+    display: block;
+    margin: 2% auto;
+    max-width: 85%; 
+    height: auto;
+}
+
+.outline {
+    border: 2px solid rgb(231, 35, 35);
+    text-align: center;
+    font-size: inherit;
+    max-width: 100%;
+    height: auto;
+    background-color: white;
+}
+
+.outline:hover {
+    border-color: rgb(255, 35, 35);
+}
+
+.outlined_img {
+    opacity: 0.4;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    max-width: inherit; 
+    height: inherit;
+    padding: 5px;
+}
+
+.outline:hover .outlined_img {
+    opacity: 1;
 }
