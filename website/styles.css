@@ -165,14 +165,17 @@ img.align-center {
     height: auto;
     background-color: white;
     cursor: pointer;
+    transition: .5s ease;
 }
 
 .outline:hover {
-    border-color: rgb(255, 35, 35);
+    border-color: rgb(200, 35, 35);
+    background-color: rgb(200, 35, 35);
+    color: white;
 }
 
 .outlined_img {
-    opacity: 0.4;
+    opacity: 1;
     transition: .5s ease;
     backface-visibility: hidden;
     max-width: inherit; 
