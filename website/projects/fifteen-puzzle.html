@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="..\styles.css">
+    <head>
+        <title>Fifteen Puzzle Solver</title>
+    </head>
+    <div class="col-12">
+        <div class="menu_bar">
+            <input type="button" class="menu_home_button" onclick="location.href='../../index.html'" value="Drew's Portfolio"/>
+            <input type="button" class="button" onclick="location.href='../projects.html';" value="Projects" />
+            <input type="button" class="button" onclick="location.href='../involvement.html';" value="Involvement" />
+            <input type="button" class="button" onclick="location.href='../resume.html';" value="Resume" />
+        </div>
+    </div>
+    <div class="col-12">
+        <h1>Fifteen Puzzle Solver</h1>
+    </div>
+    <div>
+        <div class="col-8">
+            <p>
+                One of the main assignments for an Artificial Intelligence class that I recently took
+                was to develop algorithms that could solve a fifteen square puzzle. A start and end state
+                were to be input via command line. My code would output the moves needed to solve the 
+                puzzle configuration as well as the cost of solving the puzzle. The cost of moving a tile
+                valued less than 10 was 1. The cost of moving a tile with a value of 10 or higher was 10.
+            </p>
+            <p>
+                    In the first version of the assignment, I was instructed to use a breadth-first search 
+                    algorithm and then develop heuristic algorithms for two different sets of move cost rules.
+                    The breadth-first search simply iterated over all possible moves from the start until the 
+                    goal state was reached. The first heuristic function estimated cost by counting how many tiles 
+                    on the board were not yet in the right spot. The second heuristic function compared the positions 
+                    of each tile to where the tile needed to be moved. The distance of each tile from its destination 
+                    determined the estimated cost. For both heuristic searches, the estimated cost was added to the 
+                    cost of moving up to that point to determine an H value. Moves with the lowest H value were visited
+                    first until the goal state was reached.
+                </p>
+        </div>
+        <div class="col-4">
+            <img src="../../images/solving-15-puzzle.gif" alt="Example of 15 Puzzle Being Solve" 
+            title="Solving a 15 Puzzle" style="max-width: 100%; height: auto;"/>
+        </div>
+    </div>
+    <div class="col-12">
+        <p>
+            Relevant code for this project can be found below.
+        </p>
+        <ul>
+            <li><a href="../../documents/15 Puzzle Part 1/APLSourceCodeFile.java">Heuristic Java Source Code</a></li>
+            <li><a href="../../documents/15 Puzzle Part 1/Assignment 1 Inputs.txt">Source Code Test Inputs</a></li>
+        </ul>
+        <br />
+        <p>
+            The second assignment built on code from the first assignment. The class was instructed to optimize
+            the Heuristic algorithm we developed in our first assignment to minimize the number of nodes 
+            needed to find the solution path. For this assignment, our cost was modified so each tile was
+            the price of its face value. The inputs for this code are the same as for the first part.
+        </p>
+        <p>
+            Relevant code for this project can be found below.
+        </p>
+        <ul>
+            <li><a href="../../documents/15 Puzzle Part 2/APLSourceCodeFile.java">Modified Heuristic Java Source Code</a></li>
+            <li><a href="../../documents/15 Puzzle Part 2/APL Heuristic Explanation.pdf">Heuristic Explanation Document</a></li>
+        </ul>
+    </div>
+</html>

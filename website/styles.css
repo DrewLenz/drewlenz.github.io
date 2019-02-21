@@ -106,8 +106,12 @@ h1{
 
 a {
     color: rgb(0,0,0);
-    text-decoration: underline;
-    text-decoration-color:rgb(231, 35, 35);
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    color: rgb(231, 35, 35);
 }
 
 .button {
